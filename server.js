@@ -1,6 +1,6 @@
 const dns = require("node:dns");
-
 dns.setServers(["8.8.8.8", "1.1.1.1"])
+
 const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
@@ -27,6 +27,10 @@ app.use(methodOverride("_method"));
  app.use(express.static(path.join(__dirname, "public")));
 // Morgan for logging HTTP requests
 app.use(morgan('dev'));
+
+app.get('/',(req, res)=>{
+    res.render('home.ejs')
+})
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
