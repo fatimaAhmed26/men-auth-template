@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>auth app</h1>
-    <a href="/auth/sign-up">sign up</a>
-        <a href="/auth/sign-in">sign in</a>
+<%- include('./partials/nav') %>
+
+    <% if (user) { %>
+        <h1>Welcome to the app <%= user.username %></h1>
+        <form action="/auth/sign-out?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-warning">Sign Out</button>
+        </form>
+        <a href="/dashboard">View dashboard</a>
+    <% } else { %>
+        <a href="/auth/sign-up">Sign Up</a>
+        <a href="/auth/sign-in">Sign In</a>
+    <% } %>
+
+    
 </body>
 </html>

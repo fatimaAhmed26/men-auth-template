@@ -1,0 +1,17 @@
+<%- include('./partials/nav') %>
+    <h1>Edit <%= findFruit.name %></h1>
+    <form action="/fruits/<%=findFruit._id%>?_method=PUT" method="post">
+        <label for="name">Name:</label>
+<input type="text" id="name" name="name" value="<%=findFruit.name %>">
+ <br>
+<label for="isReadyToEat">Ready to eat?</label>
+<% if (findFruit.isReadyToEat === true){ %>
+<input type="checkbox" id="isReadyToEat" name="isReadyToEat" checked >
+<br>
+<% }else{ %>
+    <input type="checkbox" id="idReadyToEat" name="idReadyToEat" >
+<%} %>
+<button type="submit">Update fruit</button>
+    </form>
+</body>
+</html>
